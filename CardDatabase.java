@@ -37,7 +37,10 @@ public class CardDatabase {
                             break;
                         }
                     case 3:
-                        break;
+                        {
+                            System.out.println("Invalid input");
+                            break;
+                        }
                     default:
                         System.out.println("Invalid input");
                         break;
