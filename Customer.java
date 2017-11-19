@@ -5,7 +5,7 @@ public class Customer {
     private int coffeePunches;
    
     public Customer(String n){
-        name =n;
+        name = n;
     }
     public Customer (String n, int saladCount, int coffeeCount){
         name = n;
@@ -44,10 +44,10 @@ public class Customer {
         if (saladPunches >=12){
             saladPunches -= 12;
             System.out.println(name + " has completed their salad card!");
-            System.out.println(name + " has " + saladPunches + " salad card punches.");
+            System.out.println(name + " now has " + saladPunches + " salad card punches.");
         }
         else{
-            System.out.println(name + " has " + saladPunches + " salad card punches.");
+            System.out.println(name + " now has " + saladPunches + " salad card punches.");
         }
     }
     public void addCoffeePunch (int inc) {
@@ -65,5 +65,7 @@ public class Customer {
     public String toString() {
         return "Name: " + name + ", Salad punch count: " + saladPunches + ", Coffee punch count: "+ coffeePunches;
     }
+    
+    
     
 }
