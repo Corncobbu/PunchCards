@@ -17,28 +17,28 @@ public class CardDatabase {
         Scanner input = new Scanner(System.in);
         
         while(running){
-            System.out.println("Enter the name of a customer.");
-            String name = input.nextLine(); //Doesn't work. Find way to store input to use .contain
-            if (cards.contains(name)){ //customer array isn't strings hnng
-                //int index = name.getIndex() or smth
-                System.out.println("Press 1 to add coffee punches, press 2 to add salad punches, press 3 to close"); 
+            System.out.println("Enter the name of a customer. Press X to close");
+            String name = input.nextLine(); 
+            
+            if (containsName(name, cards)> -1 && !name.equalsIgnoreCase("X")){
+                int index = containsName(name,cards);
+                System.out.println(cards.get(index));
+                
+                System.out.println("Press 1 to add coffee punches, press 2 to add salad punches"); 
                 int ans = input.nextInt();
                 switch (ans) {
                     case 1:
                         {
                             System.out.println("How many coffee punches would you like to add?");
                             int inc = input.nextInt();
+                            cards.get(index).addCoffeePunch(inc);
                             break;
                         }
                     case 2:
                         {
                             System.out.println("How many salad punches would you like to add?");
                             int inc = input.nextInt();
-                            break;
-                        }
-                    case 3:
-                        {
-                            System.out.println("Invalid input");
+                            cards.get(index).addSaladPunch(inc);
                             break;
                         }
                     default:
@@ -46,17 +46,27 @@ public class CardDatabase {
                         break;
                 }
             }
-            //implement close program later
-            //else if(input == close){
-            //  running = false;
-            //}
-            else{
+            
+            else if (containsName(name,cards)==-1 &&!name.equalsIgnoreCase("X")){
                 System.out.println("Customer not found.");
+            }
+            
+            else{
+                System.out.println("Bye!");
+                running = false;
             }
         }
         
         
     }
     
+    public static int containsName(String n, ArrayList<Customer> list){
+        for(Customer c: list){
+            if (c.getName().equals(n)){ 
+                return list.indexOf(c);
+            }
+        }
+        return -1;
+    }
     
 }
