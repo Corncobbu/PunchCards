@@ -17,9 +17,11 @@ public class CardDatabase {
         Scanner input = new Scanner(System.in);
         
         while(running){
+            
             System.out.println("Enter the name of a customer. Press X to close");
             String name = input.nextLine(); 
-            
+            //System.out.println(name);
+            //insert inner while loop
             if (containsName(name, cards)> -1 && !name.equalsIgnoreCase("X")){
                 int index = containsName(name,cards);
                 System.out.println(cards.get(index));
@@ -32,6 +34,7 @@ public class CardDatabase {
                             System.out.println("How many coffee punches would you like to add?");
                             int inc = input.nextInt();
                             cards.get(index).addCoffeePunch(inc);
+                            name = input.nextLine(); //new line buffer
                             break;
                         }
                     case 2:
@@ -39,10 +42,12 @@ public class CardDatabase {
                             System.out.println("How many salad punches would you like to add?");
                             int inc = input.nextInt();
                             cards.get(index).addSaladPunch(inc);
+                            name = input.nextLine(); //new line buffer
                             break;
                         }
                     default:
                         System.out.println("Invalid input");
+                        name = input.nextLine(); //new line buffer
                         break;
                 }
             }
